@@ -1,39 +1,38 @@
 #include <stdio.h>
 #include <string.h>
 
-int main()
-{
-        int i, j, n, k;
+int main() {
+     int m, j, n, k;
+        char str[n], sstr[k];
 
 
         printf("enter the value of n and k:");
         scanf("%d %d",&n, &k);
-        char str[n], sstr[k];
-
         printf("enter string n:");
         scanf("%s", str);
         printf("enter string k:");
         scanf("%s", sstr);
-
-        int count = 0;
-        for(j=1; j<=k; j++){
-        for(i=1; i<=n-j; i++){
-
-        char newsub[j], newsstr[j];
-        int c=1;
-         while(c<j)
-         {
-                 newsub[c] = str[i+c-1];
-                 newsstr[c] = sstr[i+c-1];
-                 c++;
-         }
-         int comp = strcmp(newsub,newsstr);
-         if(comp == 0)
-         count = count + 1;
-
-        }
+       
+        int a[26]={0};
+       
+        for(m=0; m<k; m++){
+            a[sstr[m]-'a'] = 1;
         }
 
-        printf("%d", count);
+        int l=0,i=0;
+int ans = 0;
+while(i<n)
+{
+if(a[str[i]-'a']==0)
+{
+ans = ans + (l*(l+1))/2;
+l=0;
+}
+else l++;
+i++;
+}
+ans = ans + (l*(l+1))/2;
+   
 
+        printf("%d", ans);
 }
